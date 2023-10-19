@@ -54,3 +54,35 @@ constructor, using the annotation
 @Autowired
 
 Spring makes the injection possible
+### Second Commit: Component Scanning
+Spring scans Java classes for special
+annotations, like @Component, and registers
+them in the Spring Container.
+
+This annotation in the main Application,
+created by th initializr:
+```
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+```
+enables Auto Configuration, Component
+Scanning and Additional Configuration,
+as it is composed by @EnableConfiguration,
+@ComponentScan and @Configuration
+annotations.
+
+By default, Spring Boot starts component 
+scanning from same package as the main 
+Spring Boot application and also scans 
+sub-packages recursively.
+
+In order to scan other packages, they 
+need to be listed in the @SpringBootApplication
+annotation:
+```
+@SpringBootApplication(
+    scanBasePackages={"com.ixns.springcoredemo",
+                      "com.ixns.util"})
+public class SpringCoreDemoApplication {
+  ...
+}
+```
