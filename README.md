@@ -184,6 +184,29 @@ application.properties file:
 ```properties
  spring.main.lazy-initialization=true
 ```
+### Seventh Commit: Bean Scopes
+* __Singleton__: It is the default scope. 
+Spring Container creates only one instance,
+it is cached in memory and all 
+dependency injections will reference
+to the same bean.
+* __Prototype__: Creates a new bean instance
+for each request.
+* __Request__: Only for web apps. HTTP Request
+* __Session__: Only for web apps. HTTP Session
+* __Global-Session__: Only for web apps. HTTP Global Session
+
+In order to set a scope, it has to be
+declared in the class with the @Scope
+annotation:
+```java
+@Component
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public class TrackCoach implements Coach {
+  ...
+}
+```
+
 
 
 
