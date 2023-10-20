@@ -161,3 +161,29 @@ will not start.
 In case @Qualifier and @Primary
 annotations are present, @Qualifier
 takes precedence.
+### Sixth Commit: Lazy Initialization
+By default, when the application starts,
+all beans are initialized.
+
+Lazy initialization makes a bean to be
+initialized only when it is needed.
+
+To make a bean Lazy Initialized, it
+needs to be marked with the @Lazy
+annotation.
+```java
+@Component
+@Lazy
+public class TrackCoach implements Coach {
+  ...
+}
+```
+To make all beans Lazy Initialized,
+add the following line to the
+application.properties file:
+```properties
+ spring.main.lazy-initialization=true
+```
+
+
+
