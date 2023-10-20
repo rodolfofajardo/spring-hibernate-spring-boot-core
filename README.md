@@ -115,3 +115,30 @@ public class DemoController {
   ...
 }
 ```
+### Fourth Commit: Qualifiers
+The @Qualifier annotation is used with
+the name of a class when more than one
+implementation matches a given type.
+
+In the example, there is an interface
+(Coach), which is implemented in 
+four different classes (CricketCoach,
+BaseballCoach, TrackCoach and
+TennisCoach), all of them annotated
+with @Component.
+
+To inject one class in the controller
+the @Qualifier annotation is used:
+```java
+@RestController
+public class DemoController {
+    private Coach myCoach;
+    @Autowired
+    public DemoController(@Qualifier("cricketCoach") Coach theCoach) {
+        myCoach = theCoach;
+    }
+  ...
+}
+```
+Notice the name of the class is in 
+lower camel case.
