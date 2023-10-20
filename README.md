@@ -78,11 +78,40 @@ sub-packages recursively.
 In order to scan other packages, they 
 need to be listed in the @SpringBootApplication
 annotation:
-```
+```java
 @SpringBootApplication(
     scanBasePackages={"com.ixns.springcoredemo",
                       "com.ixns.util"})
 public class SpringCoreDemoApplication {
+  ...
+}
+```
+### Third Commit: Setter Injection
+Dependency Injection is done via the
+setter methods.
+```java
+@RestController
+public class DemoController {
+  private Coach myCoach;
+  @Autowired
+  public void setCoach(Coach theCoach) {
+    myCoach = theCoach;
+  }
+... 
+}
+```
+### Field Injection
+Injecting dependencies by setting field 
+values on the class directly.
+
+This type of injection was very popular
+but is no longer recommended.
+```java
+@RestController
+public class DemoController {
+  @Autowired
+  private Coach myCoach;
+  // no need for constructors or setters
   ...
 }
 ```
