@@ -142,3 +142,22 @@ public class DemoController {
 ```
 Notice the name of the class is in 
 lower camel case.
+### Fifth Commit: Primary
+An alternative to @Qualifier annotation,
+in order to select only one implementation
+the selected class will be marked with
+the @Primary annotation.
+```java
+@Component
+@Primary
+public class TrackCoach implements Coach {
+  ...
+}
+```
+If more than one implementation is
+annotated with @Primary, the application
+will not start.
+
+In case @Qualifier and @Primary
+annotations are present, @Qualifier
+takes precedence.
