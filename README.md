@@ -244,6 +244,52 @@ public class CricketCoach implements Coach {
   ...
 }
 ```
+### Ninth Commit: Java Configuration Beans
+Another way to configure beans without
+annotations is by using a configuration
+class.
+
+1. The bean is created with no
+annotations.
+```java
+public class SwimCoach implements Coach {
+    ... 
+}
+```
+2. A @Configuration class is created
+3. A @Bean method is defined in this
+class to configure the bean.
+```java
+@Configuration
+public class SportConfig {
+  @Bean
+  public Coach swimCoach() {
+    return new SwimCoach();
+  }
+}
+```
+4. Finally, the bean is injected to
+the controller.
+```java
+@RestController
+public class DemoController {
+  private Coach myCoach;
+
+  @Autowired
+  public DemoController(@Qualifier("swimCoach") Coach theCoach) {
+    System.out.println("In constructor: " + getClass().getSimpleName());
+    myCoach = theCoach;
+  }
+    ... 
+}
+```
+#### Use case for @Bean
+To make an existing third-party class 
+available to Spring framework, but you 
+may not have access to the source code 
+of third-party class. However, 
+you would like to use the third-party 
+class as a Spring bean.
 
 
 
