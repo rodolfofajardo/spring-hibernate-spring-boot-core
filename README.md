@@ -206,7 +206,44 @@ public class TrackCoach implements Coach {
   ...
 }
 ```
+### Eighth Commit: Bean Life Cycle Methods
+The bean life cycle goes like this:
 
+Contained Started -> Bean Instantiated ->
+Dependency Injected -> Internal Spring
+Processing -> __Custom Init Method*__ ->
+Bean Ready to use -> Container
+Shutdown -> __Custom Destroy Method*__ ->
+Stop
+
+During Bean Initialization, there is a 
+hook to call custom business logic
+methods and setting up handles to 
+resources.
+
+@PostConstruct annotation lets us
+mark a method for tasks when 
+initializing.
+
+As for bean destruction, in order to
+call custom business logic and clean
+up handles to resources, we use the
+@PreDestroy annotation.
+```java
+@Component
+public class CricketCoach implements Coach {
+  ...  
+  @PostConstruct
+  public void doMyStartupStuff() {
+    System.out.println("In doMyStartupStuff(): " + getClass().getSimpleName());
+  }
+  @PreDestroy
+  public void doMyCleanupStuff() {
+    System.out.println("In doMyCleanupStuff(): " + getClass().getSimpleName());
+  } 
+  ...
+}
+```
 
 
 
